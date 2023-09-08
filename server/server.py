@@ -3,7 +3,7 @@ import threading
 import logging
 
 # 로깅 설정
-logging.basicConfig(filename='server.log', level=logging.INFO)
+logging.basicConfig(filename='server.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # 클라이언트 처리 함수
 def handle_client(conn, addr):
@@ -15,8 +15,10 @@ def handle_client(conn, addr):
 
         request = data.decode()
         logging.info(f"Received request for {request}")
+        
+        valid_request = request == 'a.txt' or request == 'b.txt'
 
-        if request == 'a.txt' or request == 'b.txt':
+        if valid_request:
             try:
                 with open(request, 'r') as file:
                     content = file.read()

@@ -2,7 +2,7 @@ import socket
 import logging
 
 # 로깅 설정
-logging.basicConfig(filename='client.log', level=logging.INFO)
+logging.basicConfig(filename='client.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # 서버 설정
 HOST = '127.0.0.1'
