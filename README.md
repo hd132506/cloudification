@@ -8,8 +8,16 @@ The ultimate goal of this project is to be used as an experimental environment f
 ## Use case
 
 1. The server initially sets pretrained model and split point then runs ***server.py***. 
-2. Clients runs ***client.py***. They can 
 
+2. Clients runs ***client.py***. They first download client model from the server.
+
+3. Clients input their own data to the client model to generate *smashed data* and send them to the server.
+
+4. The server returns the prediction by feeding them into the server model. 
+
+   - Updating model does not supported in this phase but should be implemented soon.
+
+   ​	
 
 
 ## Initial Phase Goal
