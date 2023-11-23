@@ -26,5 +26,5 @@ The ultimate goal of this project is to be used as an experimental environment f
 2. Pytorch environment Setup (Done)
 3. Write a simple code to generate a trained deep learning model (Done)
 4. Implement model splitter
-   * Currently, Pytorch does not support generalized splitting
+   * Since current Pytorch does not support generalized splitting method, we defined split model class explicitly.
 
