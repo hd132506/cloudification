@@ -1,9 +1,15 @@
 import socket
 import threading
 import logging
+import torch
 
 # 로깅 설정
 logging.basicConfig(filename='server.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+valid_request_list = ['Download', 'Predict']
+
+client_model_name = 'client_model.pt'
+server_model_name = 'server_model.pt'
 
 # 클라이언트 처리 함수
 def handle_client(conn, addr):
@@ -15,10 +21,10 @@ def handle_client(conn, addr):
 
         request = data.decode()
         logging.info(f"Received request for {request}")
-        
-        valid_request = request == 'a.txt' or request == 'b.txt'
 
-        if valid_request:
+        assert request in valid_request_list, f"Invalid request {request}"
+
+        if request == 'Download':
             try:
                 with open(request, 'r') as file:
                     content = file.read()
@@ -41,6 +47,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
     server_socket.listen()
 
     logging.info(f"Server started at {HOST}:{PORT}")
+    print((f"Server started at {HOST}:{PORT}"))
 
     while True:
         conn, addr = server_socket.accept()

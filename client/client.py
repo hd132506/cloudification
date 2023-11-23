@@ -12,7 +12,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     client_socket.connect((HOST, PORT))
 
     while True:
-        choice = input("1: Download a.txt\n2: Download b.txt\n3: Exit\nEnter your choice: ")
+        choice = input("1: Download client-side ResNet\n2: Make prediction\n3: Exit\nEnter your choice: ")
 
         if choice == '1':
             request = 'a.txt'

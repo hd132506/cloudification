@@ -17,12 +17,14 @@ The ultimate goal of this project is to be used as an experimental environment f
 
    - Updating model does not supported in this phase but should be implemented soon.
 
-   ​	
+     ​
 
 
 ## Initial Phase Goal
 
 1. Make a simple server-client application (Done)
-2. Pytorch environment Setup
-3. Write a simple code to generate a trained deep learning model
+2. Pytorch environment Setup (Done)
+3. Write a simple code to generate a trained deep learning model (Done)
+4. Implement model splitter
+   * Currently, Pytorch does not support generalized splitting
 
