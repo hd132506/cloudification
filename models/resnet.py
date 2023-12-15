@@ -56,3 +56,38 @@ class ResNet(nn.Module):
         out = out.view(out.size(0), -1)
         out = self.fc(out)
         return out
+    
+
+class ResNetClient(nn.Module):
+    def __init__(self):
+        super(ResNetClient, self).__init__()
+        self.conv1 = nn.Conv2d(1, 64, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(64)
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, x):
+        out = self.relu(self.bn1(self.conv1(x)))
+        return out
+    
+
+class ResNetServer(nn.Module):
+    def __init__(self):
+        super(ResNetServer, self).__init__()
+        self.layer1 = self._make_layer(64, 64, 2, stride=1)
+        self.layer2 = self._make_layer(64, 128, 2, stride=2)
+        self.fc = nn.Linear(1152, 10)
+
+    def _make_layer(self, in_channels, out_channels, num_blocks, stride):
+        layers = []
+        layers.append(ResidualBlock(in_channels, out_channels, stride))
+        for _ in range(num_blocks - 1):
+            layers.append(ResidualBlock(out_channels, out_channels))
+        return nn.Sequential(*layers)
+
+    def forward(self, smashed_x):
+        out = self.layer1(smashed_x)
+        out = self.layer2(out)
+        out = nn.functional.avg_pool2d(out, 4)
+        out = out.view(out.size(0), -1)
+        out = self.fc(out)
+        return out

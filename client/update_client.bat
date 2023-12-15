@@ -1,2 +1,2 @@
-copy /Y "C:\Users\admin\repository\cloudification\client\client.py" "C:\Users\admin\repository\cloudification\client\multple clients\client 1"
-copy /Y "C:\Users\admin\repository\cloudification\client\client.py" "C:\Users\admin\repository\cloudification\client\multple clients\client 2"
+copy /Y C:\Users\admin\repository\cloudification\client\client.py ".\multple clients\client 1"
+copy /Y C:\Users\admin\repository\cloudification\client\client.py ".\multple clients\client 2"
