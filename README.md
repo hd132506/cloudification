@@ -1,5 +1,5 @@
 # Cloudification
-Python based AI-as-a-service cloud system using split learning platform.
+Python based AI-as-a-service cloud platform using split learning algorithm.
 
 The ultimate goal of this project is to be used as an experimental environment for any study related to split learning with Pytorch. 
 
@@ -13,7 +13,7 @@ The ultimate goal of this project is to be used as an experimental environment f
 
 3. Clients input their own data to the client model to generate *smashed data* and send them to the server.
 
-4. The server returns the prediction by feeding them into the server model. 
+4. The server returns the final prediction by feeding them into the server model. 
 
    - Updating model does not supported in this phase but should be implemented soon.
 
@@ -25,6 +25,6 @@ The ultimate goal of this project is to be used as an experimental environment f
 1. Make a simple server-client application (Done)
 2. Pytorch environment Setup (Done)
 3. Write a simple code to generate a trained deep learning model (Done)
-4. Implement model splitter
+4. Implement model splitter (Done)
    * Since current Pytorch does not support generalized splitting method, we defined split model class explicitly.
 
